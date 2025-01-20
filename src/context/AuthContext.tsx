@@ -5,6 +5,7 @@ type AuthContext = {
     token: string|null;
     login: (user:User,token:string)=>void;
     logout: ()=>void;
+    checkSession: ()=>boolean;
 }
 
 type User = {
@@ -31,8 +32,24 @@ export const AuthProvider = ({children}:{children:ReactNode}) => {
         localStorage.removeItem('token');
     }
 
+    const checkSession=():boolean=>{
+        if(user) return true;
+        
+        const token=localStorage.getItem('token');
+        if(!token) return false;
+        
+        // fetch user details from server
+        const user_:User={
+            id:'1',
+            name:'John Doe',
+            email:'admin@gmail.com'
+        }
+        login(user_,token);
+        return true;
+    }
+
   return (
-    <AuthContext.Provider value={{user,token,login,logout}}>
+    <AuthContext.Provider value={{user,token,login,logout,checkSession}}>
         {children}
     </AuthContext.Provider>
   )

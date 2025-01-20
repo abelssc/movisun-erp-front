@@ -4,8 +4,8 @@ import { useAuth } from '../context/AuthContext';
 
 
 const PrivateRoutes = ({children}:{children:ReactNode}) => {
-    const {user} = useAuth();
-    if(!user) return <Navigate to="/auth/login"/>
+    const {checkSession} = useAuth();
+    if(!checkSession()) return <Navigate to="/auth/login"/>
     return children
 }
 

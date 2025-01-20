@@ -1,8 +1,13 @@
-import React from 'react'
+import { useEffect } from "react";
+import { useApp } from "../../../context/AppContext";
 
-type Props = {}
 
-const InvoiceList = (props: Props) => {
+const InvoiceList = () => {
+   const { setHeader } = useApp();
+    
+      useEffect(() => {
+        setHeader("Pedidos");
+      }, [setHeader]);
   return (
     <div>InvoiceList</div>
   )

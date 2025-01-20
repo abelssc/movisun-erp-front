@@ -14,7 +14,7 @@ const Login = () => {
         e.preventDefault();
         
         // Simulación de autenticación
-        if (email === 'admin@example.com' && password === '123456') {
+        if (email === 'admin@gmail.com' && password === '123456') {
             login({ id: '1', name: 'Admin', email }, 'fake-token');
             navigate('/'); // Redirigir a la página principal
         } else {

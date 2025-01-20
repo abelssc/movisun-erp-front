@@ -3,8 +3,8 @@ import { useAuth } from "../context/AuthContext";
 import { Navigate } from "react-router";
 
 const PublicRoutes = ({children}:{children:ReactNode}) => {
-  const {user} = useAuth();
-  if(user) return <Navigate to="/"/>
+  const {checkSession} = useAuth();
+  if(checkSession()) return <Navigate to="/"/>
   return children;
 };
 
